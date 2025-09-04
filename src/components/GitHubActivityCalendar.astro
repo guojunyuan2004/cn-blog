@@ -135,7 +135,7 @@ function getMonthLabels(
       }
       const month = monthNames[getMonth(parseISO(firstActivity.date))]
       if (!month) {
-        const monthName = new Date(firstActivity.date).toLocaleString('en-US', {
+        const monthName = new Date(firstActivity.date).toLocaleString('zh-CN', {
           month: 'short',
         })
         throw new Error(`Unexpected error: undefined month label for ${monthName}.`)
