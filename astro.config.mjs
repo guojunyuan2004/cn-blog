@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import expressiveCode from 'astro-expressive-code'
 import siteConfig from './src/site.config'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import { pluginTextMarkers } from 'expressive-code'
 import remarkDescription from './src/plugins/remark-description' /* Add description to frontmatter */
 import remarkReadingTime from './src/plugins/remark-reading-time' /* Add reading time to frontmatter */
 import rehypeTitleFigure from './src/plugins/rehype-title-figure' /* Wraps titles in figures */
@@ -61,6 +62,7 @@ export default defineConfig({
     responsiveStyles: true,
   },
   vite: {
+    // @ts-ignore - Tailwind CSS v4 plugin type compatibility with Vite 7
     plugins: [tailwindcss()],
   },
   integrations: [
@@ -72,7 +74,7 @@ export default defineConfig({
         showLineNumbers: false,
         wrap: false,
       },
-      plugins: [pluginLineNumbers()],
+      plugins: [pluginLineNumbers(), pluginTextMarkers()],
     }), // Must come after expressive-code integration
     mdx(),
   ],
